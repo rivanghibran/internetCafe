@@ -1,0 +1,17 @@
+{
+  "public/img/background.jpg": {
+    "file": "assets/background-D-mWTOgD.jpg",
+    "src": "public/img/background.jpg"
+  },
+  "resources/css/app.css": {
+    "file": "assets/app-lqn2CqNU.css",
+    "src": "resources/css/app.css",
+    "isEntry": true
+  },
+  "resources/js/app.js": {
+    "file": "assets/app-Xl4TNsLc.js",
+    "name": "app",
+    "src": "resources/js/app.js",
+    "isEntry": true
+  }
+}
