@@ -12,6 +12,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libonig-dev \
     zip \
     unzip \
+    gnupg \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
     && docker-php-ext-install \
        pdo \
@@ -24,6 +25,11 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
        opcache \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
+# Install Node.js v20 and npm
+RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash - \
+    && apt-get install -y nodejs \
+    && npm install -g npm
+
 # Install Composer
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
@@ -34,7 +40,10 @@ WORKDIR /var/www/html
 COPY . .
 
 # Install PHP dependencies
-RUN composer install --optimize-autoloader --no-dev --no-interaction --prefer-dist
+RUN composer install --optimize-autoloader --no-dev --no-interaction --prefer-dist --ignore-platform-req=ext-intl --ignore-platform-req=ext-zip
+
+# Install Node.js dependencies
+RUN npm install && npm run build
 
 # Prepare Laravel directories and storage symlink
 RUN php artisan storage:link \
