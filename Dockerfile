@@ -58,5 +58,5 @@ RUN rm /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default \
 # Expose port 80
 EXPOSE 80
 
-# Command to run both PHP-FPM and Nginx
-CMD ["sh", "-c", "php-fpm & nginx -g 'daemon off;'"]
+# Command to run PHP-FPM, Nginx, and npm run dev
+CMD ["sh", "-c", "php-fpm & nginx -g 'daemon off;' & npm run dev"]
