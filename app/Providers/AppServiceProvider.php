@@ -19,7 +19,7 @@ class AppServiceProvider extends ServiceProvider
     {
         View::composer('*', function ($view) {
             $user = Auth::user();
-            if ($user && Auth::user()->role == 'user') { 
+            if ($user && Auth::user()->role == 'user') {
                 $userCoinsAmount = $user->coins ? $user->coins->amount : 0;
             } else {
                 $userCoinsAmount = 0;
@@ -37,5 +37,4 @@ class AppServiceProvider extends ServiceProvider
     {
         //
     }
-    
 }

@@ -1,5 +1,5 @@
-import './bootstrap';
-import 'flowbite';
+import "./bootstrap";
+import "flowbite";
 
 // document.addEventListener('DOMContentLoaded', () => {
 //     const items = document.querySelectorAll('[data-carousel-item]');
@@ -43,7 +43,6 @@ import 'flowbite';
 //     startCarousel(); // Mulai interval otomatis
 // });
 
-
 // import { Carousel } from 'flowbite';
 // const carousel = new Carousel(carouselElement, items, options, instanceOptions);
 // // goes to the next (right) slide
@@ -56,7 +55,6 @@ import 'flowbite';
 // carousel.cycle();
 // // pauses the cycling (automated sliding)
 // carousel.pause();
-
 
 // const carouselElement = document.getElementById('carousel-example');
 
@@ -126,25 +124,24 @@ import 'flowbite';
 //   override: true
 // };
 
-
-const carousel = document.getElementById('carousel');
-const prevButton = document.getElementById('data-carousel-prev');
-const nextButton = document.getElementById('data-carousel-next');
+const carousel = document.getElementById("carousel");
+const prevButton = document.getElementById("data-carousel-prev");
+const nextButton = document.getElementById("data-carousel-next");
 
 // Mendapatkan indikator
 const indicators = [
-    document.getElementById('carousel-indicator-1'),
-    document.getElementById('carousel-indicator-2'),
-    document.getElementById('carousel-indicator-3'),
-    document.getElementById('carousel-indicator-4')
+    document.getElementById("carousel-indicator-1"),
+    document.getElementById("carousel-indicator-2"),
+    document.getElementById("carousel-indicator-3"),
+    document.getElementById("carousel-indicator-4"),
 ];
 
 // Array untuk menyimpan elemen item carousel
 const items = [
-    document.getElementById('carousel-item-1'),
-    document.getElementById('carousel-item-2'),
-    document.getElementById('carousel-item-3'),
-    document.getElementById('carousel-item-4')
+    document.getElementById("carousel-item-1"),
+    document.getElementById("carousel-item-2"),
+    document.getElementById("carousel-item-3"),
+    document.getElementById("carousel-item-4"),
 ];
 
 let currentIndex = 0;
@@ -153,33 +150,38 @@ let currentIndex = 0;
 function showSlide(index, direction) {
     items.forEach((item, i) => {
         // Menyembunyikan semua item terlebih dahulu
-        item.classList.add('hidden');
-        item.classList.remove('animate-slide-in-left', 'animate-slide-out-left', 'animate-slide-in-right', 'animate-slide-out-right');
-        indicators[i].classList.remove('bg-gray-900');
-        indicators[i].classList.add('bg-gray-500');
-        indicators[i].setAttribute('aria-current', 'false');
+        item.classList.add("hidden");
+        item.classList.remove(
+            "animate-slide-in-left",
+            "animate-slide-out-left",
+            "animate-slide-in-right",
+            "animate-slide-out-right"
+        );
+        indicators[i].classList.remove("bg-gray-900");
+        indicators[i].classList.add("bg-gray-500");
+        indicators[i].setAttribute("aria-current", "false");
     });
 
     // Menampilkan item yang baru dengan animasi berdasarkan arah
-    items[index].classList.remove('hidden');
-    if (direction === 'next') {
-        items[index].classList.add('animate-slide-in-left');  // Masuk dari kiri
-    } else if (direction === 'prev') {
-        items[index].classList.add('animate-slide-in-right');  // Masuk dari kanan
+    items[index].classList.remove("hidden");
+    if (direction === "next") {
+        items[index].classList.add("animate-slide-in-left"); // Masuk dari kiri
+    } else if (direction === "prev") {
+        items[index].classList.add("animate-slide-in-right"); // Masuk dari kanan
     }
 
     // Mengubah warna indikator aktif
-    indicators[index].classList.remove('bg-gray-500');
-    indicators[index].classList.add('bg-gray-900');
-    indicators[index].setAttribute('aria-current', 'true');
+    indicators[index].classList.remove("bg-gray-500");
+    indicators[index].classList.add("bg-gray-900");
+    indicators[index].setAttribute("aria-current", "true");
 }
 
 // Fungsi untuk berpindah ke slide berikutnya dengan animasi
 function nextSlide() {
     const previousIndex = currentIndex;
     currentIndex = (currentIndex + 1) % items.length; // Loop ke awal
-    items[previousIndex].classList.add('animate-slide-out-left');  // Keluar ke kiri
-    setTimeout(() => showSlide(currentIndex, 'next'), 500);  // Menunggu animasi selesai
+    items[previousIndex].classList.add("animate-slide-out-left"); // Keluar ke kiri
+    setTimeout(() => showSlide(currentIndex, "next"), 500); // Menunggu animasi selesai
 }
 
 // function nextSlide() {
@@ -201,27 +203,24 @@ function nextSlide() {
 function prevSlide() {
     const previousIndex = currentIndex;
     currentIndex = (currentIndex - 1 + items.length) % items.length; // Loop ke akhir
-    items[previousIndex].classList.add('animate-slide-out-right');  // Keluar ke kanan
-    setTimeout(() => showSlide(currentIndex, 'prev'), 500);  // Menunggu animasi selesai
+    items[previousIndex].classList.add("animate-slide-out-right"); // Keluar ke kanan
+    setTimeout(() => showSlide(currentIndex, "prev"), 500); // Menunggu animasi selesai
 }
 
 // Menghubungkan tombol dengan fungsionalitas
-nextButton.addEventListener('click', nextSlide);
-prevButton.addEventListener('click', prevSlide);
+nextButton.addEventListener("click", nextSlide);
+prevButton.addEventListener("click", prevSlide);
 
 // Menghubungkan indikator dengan fungsionalitas
 indicators.forEach((indicator, index) => {
-    indicator.addEventListener('click', () => {
+    indicator.addEventListener("click", () => {
         currentIndex = index;
-        showSlide(currentIndex, 'next');
+        showSlide(currentIndex, "next");
     });
 });
 
 // Menampilkan slide pertama pada awalnya
-showSlide(currentIndex, 'next');
+showSlide(currentIndex, "next");
 
 // Autoplay (opsional)
 setInterval(nextSlide, 5000); // Pergi ke slide berikutnya setiap 5 detik
-
-
-
