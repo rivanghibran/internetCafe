@@ -38,7 +38,7 @@
     {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script> --}}
     {{-- <script src="/public/js/script.js"></script> --}}
     {{-- <script src="{{ asset('js/app.js') }}"></script> --}}
-    <script src="{{ mix('js/app.js') }}"></script>
+    <script src="{{ asset('js/app.js') }}"></script>
     @vite(['resources/js/app.js'])
 
 </body>
