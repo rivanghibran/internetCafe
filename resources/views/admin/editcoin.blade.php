@@ -1,9 +1,3 @@
-Jika Anda ingin menangani dropdown dan form dinamis tanpa menggunakan JavaScript, Anda bisa menggunakan form yang
-berbeda untuk setiap tindakan dan menampilkan semuanya di halaman. Pengguna dapat memilih tindakan yang diinginkan
-dengan mengklik tombol yang sesuai. Berikut adalah contoh bagaimana Anda bisa melakukannya:
-
-1. **Blade Template**:
-```blade
 <x-layout-admin>
     <x-slot:title>{{ $title }}</x-slot:title>
     <x-slot:username>{{ $username }}</x-slot:username>
