@@ -43,7 +43,7 @@ COPY . .
 RUN composer install --optimize-autoloader --no-dev --no-interaction --prefer-dist --ignore-platform-req=ext-intl --ignore-platform-req=ext-zip
 
 # Install Node.js dependencies
-RUN npm install && npm run build
+RUN npm install
 
 # Prepare Laravel directories and storage symlink
 RUN php artisan storage:link \
