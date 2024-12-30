@@ -43,7 +43,7 @@ COPY . .
 RUN composer install --optimize-autoloader --no-dev --no-interaction --prefer-dist --ignore-platform-req=ext-intl --ignore-platform-req=ext-zip
 
 # Install Node.js dependencies
-RUN npm install
+RUN npm install && npm run build
 
 # Prepare Laravel directories and storage symlink
 RUN php artisan storage:link \
@@ -59,4 +59,4 @@ RUN rm /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default \
 EXPOSE 80
 
 # Command to run PHP-FPM, Nginx, and npm run dev
-CMD ["sh", "-c", "php-fpm & nginx -g 'daemon off;' & npm run dev"]
+CMD ["sh", "-c", "php-fpm & nginx -g 'daemon off;'"]
